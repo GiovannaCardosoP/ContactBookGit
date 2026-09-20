@@ -71,6 +71,25 @@ public class ContactBook {
         return result;
     }
 
+    //Para procurar pelo número de telefone
+    private int searchIndexPhone(int phone){
+        int i = 0;
+        boolean found = false;
+        int index = -1;
+
+        while(i < counter && !found){
+            if(contacts[i].getPhone() == phone){
+                found = true;
+            } else {
+                i++;
+            }
+        }
+        if(found){
+            index = i;
+        }
+        return index;
+    }
+
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
         for (int i=0;i<counter; i++)
@@ -91,15 +110,19 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
+    //Se o número de telefone não corresponder a nenhum contacto
     public boolean hasContactWithPhone(int phone) {
-    return false;
+        return searchIndexPhone(phone) >= 0;
     }
 
+    //Pre: hasContactWithPhone(phone)
     public Contact getOldestContactByPhone(int phone) {
-        return null;
+        int index = searchIndexPhone(phone);
+        return contacts[index];
     }
 
     public boolean hasDuplicatePhones() {
         return false;
     }
+
 }
