@@ -13,6 +13,8 @@ public class Main {
     public static final String SET_PHONE      = "SP";
     public static final String SET_EMAIL      = "SE";
     public static final String LIST_CONTACTS  = "LC";
+    public static final String GET_CONTACT_BY_PHONE  = "GN";
+    public static final String EQUALS_PHONE   = "EP";
     public static final String QUIT           = "Q";
 
     //Constantes que definem as mensagens para o utilizador
@@ -22,6 +24,9 @@ public class Main {
     public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
     public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
+    public static final String PHONE_NUMBER_DOES_NOT_EXIST  = "Phone number does not exist.";
+    public static final String SAME_NUMBER  = "There are contacts that share phone numbers.";
+    public static final String DIFFERENT_NUMBER   = "All contacts have different phone numbers.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
 
@@ -52,6 +57,12 @@ public class Main {
                     break;
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
+                    break;
+                case GET_CONTACT_BY_PHONE:
+                    searchContactByPhone(in, cBook);
+                    break;
+                case EQUALS_PHONE:
+                    hasDuplicatePhones(cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
@@ -147,4 +158,22 @@ public class Main {
         }
         else System.out.println(BOOK_EMPTY);
     }
+
+    private static void searchContactByPhone(Scanner in, ContactBook cBook) {
+        int phone;
+        phone= in.nextInt();
+        in.nextLine();
+        if (cBook.hasContactWithPhone(phone)) {
+            System.out.println(cBook.getOldestContactByPhone(phone).getName());
+        }
+        else System.out.println(PHONE_NUMBER_DOES_NOT_EXIST);
+    }
+
+    private static void hasDuplicatePhones(ContactBook cBook) {
+        if (cBook.hasDuplicatePhones()) {
+            System.out.println(SAME_NUMBER);
+        }
+        else System.out.println(DIFFERENT_NUMBER);
+    }
+
 }

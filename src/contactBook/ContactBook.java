@@ -1,7 +1,5 @@
 package contactBook;
 
-import contactBook.Contact;
-
 public class ContactBook {
     static final int DEFAULT_SIZE = 100;
 
@@ -93,4 +91,15 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
+    public boolean hasContactWithPhone(int phone) {
+    return false;
+    }
+
+    public Contact getOldestContactByPhone(int phone) {
+        return null;
+    }
+
+    public boolean hasDuplicatePhones() {
+        return false;
+    }
 }
