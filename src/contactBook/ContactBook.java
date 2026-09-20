@@ -121,8 +121,23 @@ public class ContactBook {
         return contacts[index];
     }
 
+    //Verifica se existem contactos com o mesmo número de telefone
     public boolean hasDuplicatePhones() {
-        return false;
+        boolean found = false;
+        int nextContact = 0;
+        initializeIterator();
+        while(hasNext() && !found){
+            Contact contact = next();
+            nextContact = currentContact; //o nextContact é o índice do contacto que vem a seguir a contact
+            while(!found && nextContact < counter) {
+                Contact otherContact = contacts[nextContact];
+                if (contact.getPhone() == otherContact.getPhone())
+                    found = true;
+                else
+                    nextContact++;
+            }
+        }
+        return found;
     }
 
 }
