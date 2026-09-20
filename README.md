@@ -1,5 +1,6 @@
 # ContactBookGit
-P1
-Gabriel Henrique Borges de Oliveira    71510	
-Giovanna Eduarda Cardoso Pereira	     68014	
-Joana dos Santos Silva                 70973	
+Turno P1
+Realizado por:
+Gabriel Henrique Borges de Oliveira    Nº 71510	
+Giovanna Eduarda Cardoso Pereira	     Nº 68014	
+Joana dos Santos Silva                 Nº 70973	
